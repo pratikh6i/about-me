@@ -1,0 +1,30 @@
+{
+  "name": "about-me",
+  "version": "1.0.0",
+  "description": "High-performance About Me portfolio web application",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "nodemon server.js",
+    "client:dev": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "node server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:api": "vitest run --config vitest.config.js"
+  },
+  "keywords": ["portfolio", "about-me", "react", "express"],
+  "author": "Pratik Shetti",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.2",
+    "supertest": "^6.3.3",
+    "vitest": "^1.1.0"
+  }
+}
