@@ -23,7 +23,16 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      // Allow unused vars that start with uppercase or underscore, also allow 'motion' for framer-motion
+      'no-unused-vars': ['error', {
+        varsIgnorePattern: '^[A-Z_]|^motion$',
+        argsIgnorePattern: '^_'
+      }],
+      // Allow exporting non-components from files (for contexts with hooks)
+      'react-refresh/only-export-components': ['warn', {
+        allowConstantExport: true,
+        allowExportNames: ['useLanguage', 'LanguageProvider', 'LanguageContext']
+      }],
     },
   },
 ])
