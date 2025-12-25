@@ -113,7 +113,7 @@ function Footer() {
                             Ask for Resume
                         </a>
                         <p className="text-xs text-[var(--text-tertiary)]">
-                            © {currentYear} Antigravity. Built with Prompts and 🤍 by Pratik Shetti
+                            © {currentYear} Antigravity. Built with Prompts and 💜 by Pratik Shetti
                         </p>
                     </motion.div>
                 </div>
