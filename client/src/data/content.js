@@ -232,7 +232,7 @@ export const automationArsenal = [
         description: "Automated Prowler deployment across organizations via Cloud Build",
         tech: "Cloud Build",
         icons: [`${assetPath}/bash-logo.svg`, `${assetPath}/terraform-logo.svg`],
-        githubLink: "https://prowler.com",
+        githubLink: "#",
     },
     {
         name: "IP Blacklist Checker",
