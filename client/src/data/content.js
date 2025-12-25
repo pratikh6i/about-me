@@ -219,13 +219,7 @@ export const automationArsenal = [
         icons: [`${assetPath}/sheets-logo.svg`, `${assetPath}/google-apps-script.svg`],
         githubLink: "#",
     },
-    {
-        name: "Cloud Armor Log Batcher",
-        description: "Exported logs to bigquery and designed custom specific quieries to help with requiremetns at the time",
-        tech: "BigQuery",
-        icons: [`${assetPath}/bash-logo.svg`],
-        githubLink: "#",
-    },
+
     {
         name: "Infrastructure Auditor",
         description: "Scanning 500+ projects for public IP exposure and firewall gaps",
