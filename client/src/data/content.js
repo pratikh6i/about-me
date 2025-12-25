@@ -221,7 +221,7 @@ export const automationArsenal = [
     },
     {
         name: "Cloud Armor Log Batcher",
-        description: "Automated analysis of 1M+ log lines to identify attack patterns",
+        description: "Exported logs to bigquery and designed custom specific quieries to help with requiremetns at the time",
         tech: "BigQuery",
         icons: [`${assetPath}/bash-logo.svg`],
         githubLink: "#",
