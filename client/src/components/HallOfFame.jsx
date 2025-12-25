@@ -91,10 +91,6 @@ function HallOfFame() {
                                     {hallOfFame.cloudHero.year}
                                 </span>
                             </div>
-
-                            <p className="text-sm text-amber-700 mt-3 font-medium">
-                                {hallOfFame.cloudHero.year}
-                            </p>
                         </div>
                     </motion.div>
 

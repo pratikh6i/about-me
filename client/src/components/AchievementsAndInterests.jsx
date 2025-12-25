@@ -66,9 +66,7 @@ function AchievementsAndInterests() {
                             </svg>
                             When Not Building/Securing Cloud
                         </h3>
-                        <p className="text-sm text-[var(--text-secondary)] mb-4 leading-relaxed">
-                            When I’m not securing the cloud, I’m usually mapping the Earth (9-year Google Maps contributor) or exploring the stars and read about univers secrates. I build web tools to save teachers time, mentor the next generation of techies, and unwind with a good game of chess.
-                        </p>
+
                         <div className="space-y-3">
                             {personalInterests.map((interest, index) => (
                                 <motion.div

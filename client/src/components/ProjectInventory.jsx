@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { pythonProjects, cloudProjects } from '../data/content';
+import { pythonProjects, cloudProjects, assetPath } from '../data/content';
 
 function ProjectInventory() {
     const [activeTab, setActiveTab] = useState('python');
 
     const tabs = [
-        { id: 'python', label: '🐍 Python Projects', projects: pythonProjects },
-        { id: 'cloud', label: '☁️ Cloud Projects', projects: cloudProjects },
+        { id: 'python', label: 'Python Projects', projects: pythonProjects, icon: `${assetPath}/python-logo.svg` },
+        { id: 'cloud', label: 'Cloud Projects', projects: cloudProjects, icon: `${assetPath}/gcp.svg` },
     ];
 
     const activeProjects = tabs.find(t => t.id === activeTab)?.projects || [];
+    const activeIcon = tabs.find(t => t.id === activeTab)?.icon;
 
     return (
         <section className="py-16" id="projects">
@@ -36,13 +37,14 @@ function ProjectInventory() {
                         <motion.button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`px-6 py-3 rounded-full font-medium transition-all ${activeTab === tab.id
-                                    ? 'bg-[var(--accent-primary)] text-white shadow-lg'
-                                    : 'bg-white border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:border-[var(--accent-primary)]'
+                            className={`px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2 ${activeTab === tab.id
+                                ? 'bg-[var(--accent-primary)] text-white shadow-lg'
+                                : 'bg-white border border-[var(--border-subtle)] text-[var(--text-secondary)] hover:border-[var(--accent-primary)]'
                                 }`}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
+                            <img src={tab.icon} alt="" className={`w-5 h-5 object-contain ${activeTab === tab.id ? 'brightness-0 invert' : ''}`} />
                             {tab.label}
                         </motion.button>
                     ))}
@@ -66,7 +68,7 @@ function ProjectInventory() {
                             whileHover={{ y: -2 }}
                         >
                             <div className="flex items-start gap-3">
-                                <span className="text-2xl">{project.icon}</span>
+                                <img src={activeIcon} alt="" className="w-6 h-6 object-contain mt-1" />
                                 <div>
                                     <h3 className="font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
                                         {project.name}
