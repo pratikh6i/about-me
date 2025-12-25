@@ -58,14 +58,6 @@ function BlogsSection() {
                             </motion.div>
                         ))}
                     </div>
-
-                    {/* Subscribe Placeholder */}
-                    <div className="inline-flex items-center gap-3 p-1 pl-4 rounded-full bg-white border border-[var(--border-subtle)]">
-                        <span className="text-sm text-[var(--text-secondary)]">Get notified when blogs go live</span>
-                        <button className="px-4 py-2 rounded-full bg-[var(--accent-primary)] text-white text-sm font-medium hover:shadow-md transition-all">
-                            Notify Me
-                        </button>
-                    </div>
                 </motion.div>
             </div>
         </section>
