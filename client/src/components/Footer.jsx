@@ -103,7 +103,7 @@ function Footer() {
                         transition={{ delay: 0.2 }}
                     >
                         <a
-                            href="mailto:pratikpshetti45@gmail.com?subject=[Enter your subject here]&body=[ please mention what is the role for which you are asking the resume, and please provide some information about your organisation vision. thank you]"
+                            href="mailto:pratikpshetti45@gmail.com"
                             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent-primary)] text-white text-sm font-medium hover:shadow-lg transition-all mb-3 hover:scale-105 active:scale-95"
                         >
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
