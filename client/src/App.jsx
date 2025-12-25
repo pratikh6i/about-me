@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import HeroSection from './components/HeroSection';
 import ClientCaseStudies from './components/ClientCaseStudies';
@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import GoogleTranslate from './components/GoogleTranslate';
 import { assetPath } from './data/content';
 import Snowfall from './components/Snowfall';
+import ChristmasGreeting from './components/ChristmasGreeting';
 import './index.css';
 
 function App() {
@@ -39,7 +40,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] overflow-x-hidden">
-      {/* Christmas Snowfall */}
+      {/* Christmas Greeting & Snowfall */}
+      <ChristmasGreeting />
       <Snowfall />
       {/* Fixed Header with Google Translate */}
       <motion.header

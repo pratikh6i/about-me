@@ -1,5 +1,37 @@
 import { useRef, useEffect } from 'react';
 
+class Snowflake {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.reset();
+    }
+
+    reset() {
+        this.x = Math.random() * this.canvas.width;
+        this.y = Math.random() * -this.canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speed = Math.random() * 1 + 0.5;
+        this.opacity = Math.random() * 0.5 + 0.3;
+        this.wind = Math.random() * 0.5 - 0.25;
+    }
+
+    update() {
+        this.y += this.speed;
+        this.x += this.wind;
+
+        if (this.y > this.canvas.height) {
+            this.reset();
+        }
+    }
+
+    draw(ctx) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.fill();
+    }
+}
+
 const Snowfall = () => {
     const canvasRef = useRef(null);
 
@@ -20,46 +52,15 @@ const Snowfall = () => {
         window.addEventListener('resize', resize);
         resize();
 
-        class Snowflake {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * -canvas.height;
-                this.size = Math.random() * 3 + 1;
-                this.speed = Math.random() * 1 + 0.5;
-                this.opacity = Math.random() * 0.5 + 0.3;
-                this.wind = Math.random() * 0.5 - 0.25;
-            }
-
-            update() {
-                this.y += this.speed;
-                this.x += this.wind;
-
-                if (this.y > canvas.height) {
-                    this.reset();
-                }
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
-
         for (let i = 0; i < snowflakeCount; i++) {
-            snowflakes.push(new Snowflake());
+            snowflakes.push(new Snowflake(canvas));
         }
 
         const render = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             snowflakes.forEach((snowflake) => {
                 snowflake.update();
-                snowflake.draw();
+                snowflake.draw(ctx);
             });
             animationFrameId = requestAnimationFrame(render);
         };

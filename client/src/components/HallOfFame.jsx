@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { hallOfFame, certifications } from '../data/content';
+import { hallOfFame, certifications, assetPath } from '../data/content';
 import { Lightbox } from './Lightbox';
 
 function HallOfFame() {
@@ -38,14 +38,14 @@ function HallOfFame() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.5, repeat: Infinity, repeatType: "reverse" }}
                         />
-                        <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3">
+                        < h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3" >
                             Hall of Fame
-                        </h2>
-                    </div>
+                        </h2 >
+                    </div >
                     <p className="text-[var(--text-secondary)]">
                         Certifications, achievements, and recognition
                     </p>
-                </motion.div>
+                </motion.div >
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {/* Cloud Hero Card */}
@@ -228,8 +228,8 @@ function HallOfFame() {
                 </motion.div>
 
 
-            </div>
-        </section>
+            </div >
+        </section >
     );
 }
 
