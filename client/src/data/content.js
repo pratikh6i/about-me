@@ -41,8 +41,8 @@ export const clientCaseStudies = [
         id: "client-vitu",
         title: "Cloud NGFW Project",
         industry: "AMER",
-        tagColor: "#7c3aed", // Purple
-        tagBg: "#f3e8ff",
+        tagColor: "#854d0e", // Dark amber/brown for clear visibility
+        tagBg: "#fef9c3",    // Solid light yellow
         duration: "Ongoing",
         metric: "Dev/Test/Prod Environments",
         role: "Cloud Security Engineer NGFW Analyst",
@@ -61,8 +61,8 @@ export const clientCaseStudies = [
         id: "client-cxapp",
         title: "Enterprise SaaS Platform",
         industry: "AMER & EMEA",
-        tagColor: "#7c3aed",
-        tagBg: "#f3e8ff",
+        tagColor: "#854d0e", // Dark yellow/brown for visibility
+        tagBg: "#fef9c3",    // Light yellow background
         duration: "Completed (7 hours)",
         metric: "5,000+ Findings Processed",
         role: "GCP Security Analyst",
@@ -82,8 +82,8 @@ export const clientCaseStudies = [
         id: "client-awr",
         title: "Global Automotive & Lifestyle Group",
         industry: "EMEA",
-        tagColor: "#7c3aed",
-        tagBg: "#f3e8ff",
+        tagColor: "#854d0e",
+        tagBg: "#fef9c3",
         duration: "14+ months (Ongoing)",
         metric: "130+ GCP Projects",
         role: "WAF & Security Operations and Automations Builder",
@@ -105,8 +105,8 @@ export const clientCaseStudies = [
         id: "client-ism",
         title: "EU Gaming Platform",
         industry: "EU", // EMEA
-        tagColor: "#7c3aed",
-        tagBg: "#f3e8ff",
+        tagColor: "#854d0e",
+        tagBg: "#fef9c3",
         duration: "Ongoing",
         metric: "IaC-First Approach",
         role: "CNAPP Tool Specialist",

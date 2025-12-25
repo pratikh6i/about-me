@@ -24,7 +24,7 @@ function ProjectInventory() {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3">
-                        📦 Project Inventory
+                        Project Inventory
                     </h2>
                     <p className="text-[var(--text-secondary)]">
                         A collection of personal and professional projects

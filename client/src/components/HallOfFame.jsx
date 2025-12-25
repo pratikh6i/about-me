@@ -217,39 +217,7 @@ function HallOfFame() {
                     </div>
                 </motion.div>
 
-                {/* Swag Gallery */}
-                <motion.div
-                    className="mt-12"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6 text-center">
-                        Google Cloud Arcade Champion - Swag Gallery
-                    </h3>
-                    <p className="text-center text-[var(--text-secondary)] mb-6">
-                        Champion tier finisher 4 times with hands-on cloud experience
-                    </p>
-                    <div className="flex justify-center gap-6 flex-wrap">
-                        {hallOfFame.arcade.swags.map((swag, index) => (
-                            <motion.div
-                                key={index}
-                                className="w-48 h-48 rounded-2xl overflow-hidden bg-white border border-[var(--border-subtle)] shadow-sm cursor-zoom-in group"
-                                whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2 }}
-                                onClick={() => openLightbox(swag, `Google Cloud Swag ${index + 1}`)}
-                            >
-                                <img
-                                    src={swag}
-                                    alt={`Google Cloud Swag ${index + 1}`}
-                                    className="w-full h-full object-cover group-hover:brightness-110 transition-all"
-                                    onError={(e) => {
-                                        e.target.parentElement.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-500 text-sm p-4 text-center">Upload swag-${index + 1}.jpg</div>`;
-                                    }}
-                                />
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
+
             </div>
         </section>
     );
