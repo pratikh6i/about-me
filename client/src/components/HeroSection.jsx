@@ -17,7 +17,10 @@ function HeroSection() {
                     src={`${assetPath}/profile.jpg`}
                     alt="Pratik Shetti"
                     className="hero-image"
-                    onError={(e) => { e.target.style.display = 'none'; }}
+                    onError={(e) => {
+                        console.error('Hero image failed to load:', e.target.src);
+                        e.target.style.background = '#f1f5f9';
+                    }}
                 />
                 <div
                     className="absolute inset-0 pointer-events-none"
@@ -30,11 +33,27 @@ function HeroSection() {
             {/* Content */}
             <div className="container relative z-10 py-16 md:py-24">
                 <motion.div
-                    className="max-w-2xl"
+                    className="max-w-2xl text-left md:text-left"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
+                    {/* Mobile Profile Image (Hidden on Desktop) */}
+                    <motion.div
+                        className="md:hidden mb-8"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                        <div className="w-40 h-40 mx-auto rounded-full border-4 border-white shadow-xl overflow-hidden relative group">
+                            <img
+                                src={`${assetPath}/profile.jpg`}
+                                alt="Pratik Shetti"
+                                className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                        </div>
+                    </motion.div>
                     {/* Badge */}
                     <motion.div
                         className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-4"
