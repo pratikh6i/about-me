@@ -31,12 +31,12 @@ function AchievementsAndInterests() {
                                     transition={{ delay: index * 0.1 }}
                                 >
                                     <div className="flex items-start gap-3">
-                                        <div className="w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
-                                            {index === 0 ? '1st' : '3rd'}
+                                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
+                                            {index === 0 ? '★' : index === 1 ? '1st' : '3rd'}
                                         </div>
                                         <div>
-                                            <h4 className="font-semibold text-amber-900">{achievement.title}</h4>
-                                            <p className="text-sm text-amber-700 mt-1">{achievement.description}</p>
+                                            <h4 className="font-semibold text-amber-900 text-sm">{achievement.title}</h4>
+                                            <p className="text-xs text-amber-700 mt-1">{achievement.description}</p>
                                             <div className="flex items-center gap-3 mt-2 text-xs text-amber-600">
                                                 <span>{achievement.venue}</span>
                                                 <span>•</span>
@@ -64,7 +64,7 @@ function AchievementsAndInterests() {
                                 <circle cx="12" cy="12" r="10" />
                                 <path d="M12 6v6l4 2" />
                             </svg>
-                            When Not Building/Securing
+                            When Not Building/Securing Cloud
                         </h3>
                         <div className="space-y-3">
                             {personalInterests.map((interest, index) => (
@@ -130,7 +130,7 @@ function AchievementsAndInterests() {
                             ))}
                         </div>
 
-                        {/* Vibe Coder Badge - Fixed Styling */}
+                        {/* Vibe Coder Badge */}
                         <motion.div
                             className="mt-6 text-center"
                             initial={{ opacity: 0 }}

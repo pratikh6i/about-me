@@ -35,9 +35,9 @@ function GoogleTranslate() {
 
   return (
     <div className="google-translate-wrapper flex items-center gap-2">
-      {/* Translation Icon */}
-      <div className="translate-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[var(--text-secondary)]">
+      {/* Translation Icon Only */}
+      <div className="translate-icon text-[var(--text-secondary)]">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="m5 8 6 6" />
           <path d="m4 14 6-6 2-3" />
           <path d="M2 5h12" />
@@ -89,7 +89,8 @@ function GoogleTranslate() {
         
         /* Hide Google logo and powered by */
         .goog-logo-link,
-        .goog-te-gadget span {
+        .goog-te-gadget span,
+        .goog-te-gadget > span {
           display: none !important;
         }
         
@@ -113,6 +114,11 @@ function GoogleTranslate() {
         }
         
         .skiptranslate iframe {
+          display: none !important;
+        }
+        
+        /* Ensure only dropdown shows */
+        .goog-te-gadget > div:first-child {
           display: none !important;
         }
       `}</style>

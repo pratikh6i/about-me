@@ -75,12 +75,9 @@ function HallOfFame() {
                         </div>
                     </motion.div>
 
-                    {/* Skill Boost Card */}
-                    <motion.a
-                        href={hallOfFame.skillBoost.profileUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700 rounded-3xl p-8 text-white relative overflow-hidden block"
+                    {/* Skill Boost Card - NOT a link anymore */}
+                    <motion.div
+                        className="bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700 rounded-3xl p-8 text-white relative overflow-hidden"
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -130,11 +127,20 @@ function HallOfFame() {
                                 />
                             </div>
 
-                            <p className="text-blue-200 mt-4 text-sm">
-                                Click to view full profile →
-                            </p>
+                            {/* Only this link should be clickable */}
+                            <a
+                                href={hallOfFame.skillBoost.profileUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 text-blue-200 hover:text-white mt-4 text-sm transition-colors"
+                            >
+                                Click to view full profile
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
                         </div>
-                    </motion.a>
+                    </motion.div>
                 </div>
 
                 {/* Certifications */}
@@ -147,7 +153,7 @@ function HallOfFame() {
                     <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6 text-center">
                         Verified Certifications
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {certifications.map((cert, index) => (
                             <motion.div
                                 key={cert.name}
@@ -158,23 +164,29 @@ function HallOfFame() {
                                 transition={{ delay: index * 0.1 }}
                                 whileHover={{ y: -4 }}
                             >
-                                {/* Badge Image */}
-                                <div className="w-24 h-24 mx-auto mb-4 rounded-xl overflow-hidden bg-[var(--bg-tertiary)] flex items-center justify-center">
-                                    <img
-                                        src={cert.badge}
-                                        alt={cert.name}
-                                        className="w-full h-full object-contain p-2"
-                                        onError={(e) => {
-                                            e.target.style.display = 'none';
-                                            e.target.parentElement.innerHTML = `<div class="w-full h-full flex items-center justify-center"><svg width="40" height="40" viewBox="0 0 24 24" fill="${cert.color}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>`;
-                                        }}
-                                    />
+                                {/* Badge Image or Icon */}
+                                <div className="w-20 h-20 mx-auto mb-4 rounded-xl overflow-hidden bg-[var(--bg-tertiary)] flex items-center justify-center">
+                                    {cert.badge ? (
+                                        <img
+                                            src={cert.badge}
+                                            alt={cert.name}
+                                            className="w-full h-full object-contain p-2"
+                                            onError={(e) => {
+                                                e.target.style.display = 'none';
+                                                e.target.parentElement.innerHTML = `<div class="w-full h-full flex items-center justify-center"><svg width="36" height="36" viewBox="0 0 24 24" fill="${cert.color}"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>`;
+                                            }}
+                                        />
+                                    ) : (
+                                        <svg width="36" height="36" viewBox="0 0 24 24" fill={cert.color}>
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                        </svg>
+                                    )}
                                 </div>
 
-                                <h4 className="font-bold text-[var(--text-primary)] mb-1">
+                                <h4 className="font-bold text-[var(--text-primary)] mb-1 text-sm">
                                     {cert.name}
                                 </h4>
-                                <p className="text-sm text-[var(--text-secondary)] mb-4">
+                                <p className="text-xs text-[var(--text-secondary)] mb-4">
                                     {cert.provider}
                                 </p>
 
@@ -182,13 +194,13 @@ function HallOfFame() {
                                     href={cert.verifyUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all hover:scale-105"
+                                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all hover:scale-105"
                                     style={{ background: `${cert.color}15`, color: cert.color }}
                                 >
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                                     </svg>
-                                    Verify on Credly
+                                    Verify
                                 </a>
                             </motion.div>
                         ))}

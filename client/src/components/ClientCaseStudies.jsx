@@ -2,6 +2,16 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { clientCaseStudies } from '../data/content';
 
+// Google Cloud Logo SVG
+const GCPLogo = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M12.65 9.51L14.39 6.23L14.47 6.09C13.15 5.4 11.63 5 10 5C8.69 5 7.44 5.28 6.32 5.77L8.61 9.55C9.02 9.22 9.49 8.96 10 8.78C10.85 8.47 11.77 8.44 12.65 9.51Z" fill="#EA4335" />
+        <path d="M19.93 10.31L17.64 6.53C16.52 5.04 14.88 4.02 12.99 3.82C13.66 4.49 14.26 5.23 14.47 6.09L14.39 6.23L12.65 9.51L16.53 9.51L19.93 10.31Z" fill="#4285F4" />
+        <path d="M6.32 5.77L4.03 9.55C3.37 10.5 3 11.7 3 13C3 17.42 6.58 21 11 21C11.63 21 12.24 20.93 12.83 20.81L12.93 20.79L14.47 17.51L10.59 17.51L6.32 5.77Z" fill="#34A853" />
+        <path d="M12.93 20.79C16.47 20.05 19.24 17.16 19.93 13.46L19.93 10.31L16.53 9.51L12.65 9.51C11.77 8.44 10.85 8.47 10 8.78C9.49 8.96 9.02 9.22 8.61 9.55L10.59 17.51L14.47 17.51L12.93 20.79Z" fill="#FBBC05" />
+    </svg>
+);
+
 function CaseStudyCard({ client, isExpanded, onToggle }) {
     return (
         <motion.div
@@ -16,20 +26,26 @@ function CaseStudyCard({ client, isExpanded, onToggle }) {
                 onClick={onToggle}
             >
                 <div className="flex items-start justify-between">
-                    <div>
-                        <h3 className="text-lg font-bold text-[var(--text-primary)]">
-                            {client.title}
-                        </h3>
-                        <div className="flex items-center gap-2 mt-1">
-                            <span
-                                className="px-2 py-0.5 text-xs font-semibold rounded-full"
-                                style={{ background: client.tagBg, color: client.tagColor }}
-                            >
-                                {client.industry}
-                            </span>
-                            <span className="text-xs text-[var(--text-tertiary)]">
-                                {client.duration}
-                            </span>
+                    <div className="flex items-start gap-3">
+                        {/* GCP Logo */}
+                        <div className="w-10 h-10 rounded-xl bg-[var(--bg-tertiary)] flex items-center justify-center flex-shrink-0">
+                            <GCPLogo />
+                        </div>
+                        <div>
+                            <h3 className="text-lg font-bold text-[var(--text-primary)]">
+                                {client.title}
+                            </h3>
+                            <div className="flex items-center gap-2 mt-1">
+                                <span
+                                    className="px-2 py-0.5 text-xs font-semibold rounded-full"
+                                    style={{ background: client.tagBg, color: client.tagColor }}
+                                >
+                                    {client.industry}
+                                </span>
+                                <span className="text-xs text-[var(--text-tertiary)]">
+                                    {client.duration}
+                                </span>
+                            </div>
                         </div>
                     </div>
 

@@ -5,7 +5,7 @@ function TechArsenal() {
     const categories = Object.values(techArsenal);
 
     return (
-        <section className="py-16 bg-[var(--bg-tertiary)]" id="skills">
+        <section className="py-16 bg-white" id="skills">
             <div className="container">
                 {/* Section Header */}
                 <motion.div
@@ -15,55 +15,47 @@ function TechArsenal() {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3">
-                        ⚔️ Tech Arsenal
+                        Tech Arsenal
                     </h2>
                     <p className="text-[var(--text-secondary)]">
                         Tools and technologies I wield daily
                     </p>
                 </motion.div>
 
-                {/* Skills Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Skills Grid - Clean Card Design */}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                     {categories.map((category, catIndex) => (
                         <motion.div
                             key={category.title}
-                            className="bg-white rounded-2xl p-6 border border-[var(--border-subtle)] hover:shadow-lg transition-all"
+                            className="rounded-2xl p-5 transition-all"
+                            style={{ backgroundColor: category.bgColor }}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: catIndex * 0.1 }}
-                            whileHover={{ y: -4, boxShadow: `0 15px 40px ${category.color}15` }}
+                            transition={{ delay: catIndex * 0.08 }}
+                            whileHover={{ y: -4, scale: 1.02 }}
                         >
                             {/* Category Header */}
                             <h3
-                                className="text-sm font-bold uppercase tracking-wider mb-4"
+                                className="text-sm font-bold mb-4"
                                 style={{ color: category.color }}
                             >
                                 {category.title}
                             </h3>
 
-                            {/* Skills */}
-                            <div className="flex flex-wrap gap-2">
+                            {/* Skills List - Vertical */}
+                            <div className="space-y-2">
                                 {category.skills.map((skill, skillIndex) => (
-                                    <motion.span
+                                    <motion.div
                                         key={skill}
-                                        className="px-3 py-1.5 text-sm font-medium rounded-full border transition-all cursor-default"
-                                        style={{
-                                            borderColor: `${category.color}30`,
-                                            color: category.color,
-                                            background: `${category.color}08`
-                                        }}
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        className="text-sm text-[var(--text-primary)] font-medium"
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
                                         viewport={{ once: true }}
-                                        transition={{ delay: catIndex * 0.1 + skillIndex * 0.03 }}
-                                        whileHover={{
-                                            scale: 1.05,
-                                            background: `${category.color}15`
-                                        }}
+                                        transition={{ delay: catIndex * 0.08 + skillIndex * 0.03 }}
                                     >
                                         {skill}
-                                    </motion.span>
+                                    </motion.div>
                                 ))}
                             </div>
                         </motion.div>

@@ -1,6 +1,9 @@
 // Core content data for the portfolio
 // All text content is in English - Google Translate widget handles other languages
 
+// Image base path - for GitHub Pages deployment from public folder
+export const assetPath = '/about-me/assets';
+
 export const profileData = {
     name: "Pratik Shetti",
     tagline: "Cloud Security Engineer | Automation Specialist | Vibe Coder",
@@ -31,10 +34,7 @@ export const profileData = {
     },
 };
 
-// Image base path for GitHub Pages
-export const assetPath = '/about-me/assets';
-
-// 8 Client Case Studies
+// 8 Client Case Studies - with updated roles
 export const clientCaseStudies = [
     {
         id: "client-ael",
@@ -44,7 +44,7 @@ export const clientCaseStudies = [
         tagBg: "#dbeafe",
         duration: "Completed",
         metric: "80L+ requests/week",
-        role: 'The "Eyes on the Glass" Analyst',
+        role: "The Security Analyst",
         mission: "Protecting one of India's largest retail platforms handling 80-120 Lakh requests weekly",
         responsibilities: [
             "Daily deep log analysis and threat hunting using Cloud Armor logs and Log Analytics",
@@ -65,7 +65,7 @@ export const clientCaseStudies = [
         tagBg: "#dcfce7",
         duration: "14+ months (Ongoing)",
         metric: "100+ GCP Projects",
-        role: "WAF Operations Lead & Automation Builder",
+        role: "WAF & Security Operations and Automations Builder",
         mission: "End-to-end security operations for a massive 100+ project GCP organization",
         responsibilities: [
             "Daily organization-level SCC checks for High/Critical findings with immediate remediation",
@@ -88,7 +88,7 @@ export const clientCaseStudies = [
         tagBg: "#fef3c7",
         duration: "Completed",
         metric: "Zero-Tool Assessment",
-        role: "The Scripting Specialist",
+        role: "Security Analyst & The Scripting Specialist",
         mission: "Security assessment for a client with no existing security tools",
         responsibilities: [
             "Created 7 custom Bash scripts to scan infrastructure from security perspective",
@@ -109,7 +109,7 @@ export const clientCaseStudies = [
         tagBg: "#f3e8ff",
         duration: "Completed",
         metric: "120+ GCP Projects",
-        role: "The Automation Builder",
+        role: "Security Analyst and Automation Builder",
         mission: "Scaling security operations across 120+ GCP projects with intelligent automation",
         responsibilities: [
             "Built Cloud Run + Pub/Sub automation for intelligent SCC alert routing",
@@ -151,7 +151,7 @@ export const clientCaseStudies = [
         tagBg: "#fce7f3",
         duration: "Completed (5 hours)",
         metric: "5,000+ Findings Processed",
-        role: "Solo Speed Run Execution",
+        role: "GCP Security Analyst",
         mission: "Urgent security analysis with zero GCP access - just raw data exports",
         responsibilities: [
             "Took complete ownership of raw SCC data dump from infrastructure team",
@@ -172,7 +172,7 @@ export const clientCaseStudies = [
         tagBg: "#ffedd5",
         duration: "Ongoing",
         metric: "Dev/Test/Prod Environments",
-        role: "Firewall Policy Executor",
+        role: "Cloud Security Engineer NGFW Analyst",
         mission: "Executing firewall strategies across multiple environments",
         responsibilities: [
             "Execute firewall policy strategies across Dev, Test, and Prod environments",
@@ -207,71 +207,81 @@ export const clientCaseStudies = [
     },
 ];
 
-// Automation Arsenal - Tools Built
+// Automation Arsenal - Tools Built (with Google Sheets icon for SCC Cleaner)
 export const automationArsenal = [
     {
         name: "GCP SCC Cleaner",
         description: "Auto-formatting complex JSON to clean CSV for executive reporting",
         tech: "Apps Script",
+        iconType: "sheets", // Google Sheets icon
         githubLink: "#",
     },
     {
         name: "Cloud Armor Log Batcher",
         description: "Python script to bulk-generate time-range-specific log links for weekly security reports",
         tech: "Python",
+        iconType: "python",
         githubLink: "#",
     },
     {
         name: "Infrastructure Auditor",
         description: "Bash script auditing Shielded VM, IP exposure, OS Config, serial ports across instances",
         tech: "Bash",
+        iconType: "bash",
         githubLink: "#",
     },
     {
         name: "Prowler Deployer",
         description: "Complete Terraform code to deploy Prowler CNAPP tool on GCP (built with Gemini)",
         tech: "Terraform",
+        iconType: "terraform",
         githubLink: "#",
     },
     {
         name: "IP Blacklist Checker",
         description: "Python script integrating 3rd party API for comprehensive IP analysis",
         tech: "Python",
+        iconType: "python",
         githubLink: "#",
     },
     {
         name: "Cloud Armor Bulk Updater",
         description: "Bash script for bulk updating policies, enabling adaptive protection across org",
         tech: "Bash",
+        iconType: "bash",
         githubLink: "#",
     },
     {
         name: "SSL Policy Manager",
         description: "Bulk SSL policy updates with customizable signature configurations",
         tech: "Bash",
+        iconType: "bash",
         githubLink: "#",
     },
     {
         name: "SCC Alert Router",
         description: "Cloud Run + Pub/Sub automation for intelligent team-specific alert routing",
         tech: "Terraform + Python",
+        iconType: "terraform",
         githubLink: "#",
     },
     {
         name: "IAM Recommender Parser",
         description: "Python script to extract IAM recommendations from complex JSON to actionable tables",
         tech: "Python",
+        iconType: "python",
         githubLink: "#",
     },
     {
         name: "Gemini Report Generator",
         description: "Workspace automation using Gemini to cut SCC report prep time by 30 mins/sheet",
         tech: "Apps Script + Gemini",
+        iconType: "gemini",
         githubLink: "#",
     },
 ];
 
-// Certifications with verification
+// Certifications with verification (added Digital Marketing)
 export const certifications = [
     {
         name: "Associate Cloud Engineer",
@@ -294,49 +304,60 @@ export const certifications = [
         color: "#ff9900",
         verifyUrl: "https://www.credly.com/badges/e0fdc077-9ae3-43e5-a19e-8f74210c401d",
     },
+    {
+        name: "Fundamentals of Digital Marketing",
+        provider: "Google",
+        badge: null, // No badge image
+        color: "#4285f4",
+        verifyUrl: "https://drive.google.com/file/d/1E5fxD9VSt9rYhm2Aw0ifGcDN4AAOoUCg/view",
+    },
 ];
 
-// Tech Arsenal - Updated Skills
+// Tech Arsenal - Updated Skills with better organization
 export const techArsenal = {
     cloudSecurity: {
         title: "Cloud Security (GCP)",
         color: "#ea4335",
+        bgColor: "#fef2f2",
         skills: [
-            "Security Command Center (SCC)",
+            "Security Command Center",
             "Cloud Armor WAF",
-            "Identity & Access Management",
-            "VPC & Firewall Rules",
+            "IAM & Policies",
+            "VPC & Firewall",
             "Cloud NGFW",
-            "Load Balancing",
-            "Cloud Logging & Monitoring",
-            "Organization Policies",
-            "Cloud Audit Logs",
+            "Cloud Logging",
+            "Audit Logs",
         ],
     },
     cnapp: {
         title: "CNAPP Tools",
         color: "#9333ea",
+        bgColor: "#faf5ff",
         skills: ["Prowler", "ThreatMapper", "Tenable"],
     },
     automation: {
         title: "Scripting & Automation",
-        color: "#4285f4",
-        skills: ["Python", "Bash", "Google Apps Script", "gcloud CLI"],
+        color: "#2563eb",
+        bgColor: "#eff6ff",
+        skills: ["Python", "Bash", "Apps Script", "gcloud CLI"],
     },
     iac: {
         title: "Infrastructure as Code",
-        color: "#34a853",
-        skills: ["Terraform (Basic)"],
+        color: "#7c3aed",
+        bgColor: "#f5f3ff",
+        skills: ["Terraform"],
     },
     infrastructure: {
         title: "Infrastructure",
-        color: "#f97316",
-        skills: ["Network Security", "Linux", "GCP", "AWS"],
+        color: "#ea580c",
+        bgColor: "#fff7ed",
+        skills: ["Linux", "GCP", "AWS", "Network Security"],
     },
     workspace: {
         title: "Google Workspace",
-        color: "#fbbc04",
-        skills: ["Google Sheets", "Google Docs", "Apps Script Automation"],
+        color: "#16a34a",
+        bgColor: "#f0fdf4",
+        skills: ["Sheets", "Docs", "Apps Script"],
     },
 };
 
@@ -366,8 +387,15 @@ export const cloudProjects = [
     { name: "Prowler IaC Deployment", desc: "Complete Terraform code for CNAPP tool deployment" },
 ];
 
-// Achievements
+// Achievements (added Best Engineer)
 export const achievements = [
+    {
+        title: "Best Engineer of the Quarter",
+        description: "Recognized for exceptional performance and contributions",
+        venue: "Searce INC",
+        year: "Oct 2025",
+        prize: "Recognition Award",
+    },
     {
         title: "Smart India Hackathon Winner",
         description: "Presented prototype solution for global water management system",
@@ -384,7 +412,7 @@ export const achievements = [
     },
 ];
 
-// Personal Interests
+// Personal Interests (updated title)
 export const personalInterests = [
     { title: "Google Maps Contributor", desc: "9+ years, inspired 15+ to join" },
     { title: "Technology Educator", desc: "Teaching school teachers modern tech tools, Workspace, and Gemini for everyday efficiency" },
@@ -409,7 +437,7 @@ export const vibeCoderProjects = [
     },
 ];
 
-// Hall of Fame Data
+// Hall of Fame Data (updated counts)
 export const hallOfFame = {
     cloudHero: {
         title: "Cloud Hero Champion",
@@ -420,9 +448,9 @@ export const hallOfFame = {
     },
     skillBoost: {
         title: "Google Cloud Skills",
-        labs: "120+",
+        labs: "336+",
         points: "78,750",
-        courses: "38+",
+        courses: "59+",
         tier: "Tier 1: Expert",
         image: `${assetPath}/skillboost.png`,
         profileUrl: "https://www.skills.google/public_profiles/14a39d36-3d88-4a0c-85ec-9533ba770ac1",
@@ -430,12 +458,17 @@ export const hallOfFame = {
     arcade: {
         title: "Google Cloud Arcade Champion",
         description: "Champion tier finisher 4 times with hands-on cloud experience",
-        swags: [`${assetPath}/swag-1.jpg`, `${assetPath}/swag-2.jpg`],
+        swags: [`${assetPath}/swag-1.jpg`],
     },
 };
 
 // News updates
 export const newsUpdates = [
+    {
+        date: "Oct 2025",
+        title: "Best Engineer of the Quarter",
+        description: "Recognized as the Best Engineer of the Quarter at Searce INC for exceptional contributions.",
+    },
     {
         date: "Dec 2025",
         title: "Cloud Hero Top 3 in APAC",
