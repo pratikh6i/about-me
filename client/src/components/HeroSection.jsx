@@ -22,15 +22,14 @@ function HeroSection() {
                         e.target.style.background = '#f1f5f9';
                     }}
                 />
-                {/* Blurred gradient overlay at the transition */}
+                {/* Subtle fade on left (15%) and bottom (15%) only */}
                 <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                        background: 'linear-gradient(90deg, rgba(248,250,252,1) 0%, rgba(248,250,252,0.95) 35%, rgba(248,250,252,0.4) 55%, transparent 70%)',
-                        backdropFilter: 'blur(4px)',
-                        WebkitBackdropFilter: 'blur(4px)',
-                        maskImage: 'linear-gradient(90deg, white 0%, white 45%, transparent 70%)',
-                        WebkitMaskImage: 'linear-gradient(90deg, white 0%, white 45%, transparent 70%)'
+                        background: `
+                            linear-gradient(90deg, rgba(248,250,252,1) 0%, rgba(248,250,252,0.5) 8%, transparent 15%),
+                            linear-gradient(0deg, rgba(248,250,252,1) 0%, rgba(248,250,252,0.5) 8%, transparent 15%)
+                        `
                     }}
                 />
             </div>
