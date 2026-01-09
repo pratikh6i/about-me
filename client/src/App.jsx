@@ -12,8 +12,6 @@ import BlogsSection from './components/BlogsSection';
 import Footer from './components/Footer';
 import GoogleTranslate from './components/GoogleTranslate';
 import { assetPath } from './data/content';
-import Snowfall from './components/Snowfall';
-import ChristmasGreeting from './components/ChristmasGreeting';
 import './index.css';
 
 function App() {
@@ -40,9 +38,6 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] overflow-x-hidden">
-      {/* Christmas Greeting & Snowfall */}
-      <ChristmasGreeting />
-      <Snowfall />
       {/* Fixed Header with Google Translate */}
       <motion.header
         className="fixed top-0 left-0 right-0 z-50 py-4 px-6 bg-white/80 backdrop-blur-md border-b border-[var(--border-subtle)] overflow-hidden"
@@ -67,14 +62,8 @@ function App() {
         </div>
 
         <div className="max-w-7xl mx-auto flex items-center justify-between relative z-10">
-          {/* Logo/Name with Santa Hat */}
+          {/* Logo/Name */}
           <div className="relative group">
-            {/* Santa Hat */}
-            <img
-              src={`${assetPath}/santa-hat.svg`}
-              className="absolute -top-3 -left-3 w-6 h-6 pointer-events-none rotate-[-15deg]"
-              alt=""
-            />
             <motion.a
               href="#"
               className="text-xl font-bold gradient-text"
@@ -83,6 +72,7 @@ function App() {
               Pratik Shetti
             </motion.a>
           </div>
+
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center gap-6">

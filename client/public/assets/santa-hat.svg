@@ -1,9 +1,0 @@
-<svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Red Hat Body -->
-  <path d="M20 70C20 40 50 10 80 40C80 40 60 45 60 55" stroke="#EA4335" stroke-width="8" stroke-linecap="round" fill="#EA4335"/>
-  <path d="M20 70L80 70L60 30Z" fill="#EA4335"/>
-  <!-- White Fur Bottom -->
-  <rect x="15" y="65" width="70" height="15" rx="7.5" fill="white"/>
-  <!-- White Pom-pom -->
-  <circle cx="80" cy="40" r="8" fill="white"/>
-</svg>
