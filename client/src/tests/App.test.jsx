@@ -10,7 +10,9 @@ describe('App', () => {
 
     it('renders the navbar logo', () => {
         render(<App />);
-        expect(screen.getByText(/LushLocks/i)).toBeInTheDocument();
+        // Use getAllByText since LushLocks appears multiple times
+        const lushLocksElements = screen.getAllByText(/LushLocks/i);
+        expect(lushLocksElements.length).toBeGreaterThan(0);
     });
 
     it('renders the services section', () => {

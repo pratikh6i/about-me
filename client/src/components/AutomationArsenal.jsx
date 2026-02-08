@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { assetPath } from '../data/content';
 import { automationArsenal } from '../data/content';
 
 // Icon components for each tech type

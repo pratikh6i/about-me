@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { hallOfFame, certifications, assetPath } from '../data/content';
+import { hallOfFame, certifications } from '../data/content';
 import { Lightbox } from './Lightbox';
 
 function HallOfFame() {
