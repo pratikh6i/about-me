@@ -5,11 +5,11 @@ import { SkeletonTestimonial } from './Skeleton';
 const testimonials = [
     {
         id: 1,
-        name: 'Priya Sharma',
-        location: 'Mumbai',
-        image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces',
+        name: 'Vikas Dighe',
+        location: 'Sangamner',
+        image: '/vikasdatapoc/vikas.jpg',
         rating: 5,
-        text: 'After years of struggling with hair fall, LushLocks transformed my hair completely! The Ayurvedic treatment is magical. My hair has never looked this healthy.',
+        text: 'खूपच भारी अनुभव! केसांची काळजी घेण्याचा उत्तम मार्ग सापडला. आयुर्वेदिक ट्रीटमेंट एकदम झकास आहे. माझे केस आता मजबूत आणि चमकदार दिसतात.',
         treatment: 'Ayurvedic Hair Treatment',
     },
     {
@@ -109,8 +109,8 @@ export default function Testimonials() {
                                     visible: { opacity: 1, y: 0 },
                                 }}
                                 className={`p-6 rounded-2xl transition-all duration-500 ${index === activeIndex
-                                        ? 'bg-primary-600 shadow-xl shadow-primary-900/30 scale-105'
-                                        : 'bg-neutral-800 hover:bg-neutral-750'
+                                    ? 'bg-primary-600 shadow-xl shadow-primary-900/30 scale-105'
+                                    : 'bg-neutral-800 hover:bg-neutral-750'
                                     }`}
                             >
                                 {/* Header */}
@@ -134,10 +134,10 @@ export default function Testimonials() {
                                         <svg
                                             key={i}
                                             className={`w-4 h-4 ${i < testimonial.rating
-                                                    ? index === activeIndex
-                                                        ? 'text-white'
-                                                        : 'text-secondary-400'
-                                                    : 'text-neutral-600'
+                                                ? index === activeIndex
+                                                    ? 'text-white'
+                                                    : 'text-secondary-400'
+                                                : 'text-neutral-600'
                                                 }`}
                                             fill="currentColor"
                                             viewBox="0 0 20 20"
@@ -155,8 +155,8 @@ export default function Testimonials() {
 
                                 {/* Treatment Tag */}
                                 <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${index === activeIndex
-                                        ? 'bg-white/20 text-white'
-                                        : 'bg-neutral-700 text-neutral-300'
+                                    ? 'bg-white/20 text-white'
+                                    : 'bg-neutral-700 text-neutral-300'
                                     }`}>
                                     {testimonial.treatment}
                                 </span>
@@ -172,8 +172,8 @@ export default function Testimonials() {
                             key={index}
                             onClick={() => setActiveIndex(index)}
                             className={`w-2 h-2 rounded-full transition-all duration-300 ${index === activeIndex
-                                    ? 'w-8 bg-primary-400'
-                                    : 'bg-neutral-600 hover:bg-neutral-500'
+                                ? 'w-8 bg-primary-400'
+                                : 'bg-neutral-600 hover:bg-neutral-500'
                                 }`}
                             aria-label={`Go to testimonial ${index + 1}`}
                         />
