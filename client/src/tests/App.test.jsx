@@ -3,20 +3,18 @@ import { render, screen } from '@testing-library/react';
 import App from '../App';
 
 describe('App', () => {
-    it('renders the hero section', () => {
+    it('renders the hero section with name', () => {
         render(<App />);
-        expect(screen.getByText(/Unlock Your Hair/i)).toBeInTheDocument();
+        expect(screen.getByText(/Pratik Shetti/i)).toBeInTheDocument();
     });
 
-    it('renders the navbar logo', () => {
+    it('renders the navbar', () => {
         render(<App />);
-        // Use getAllByText since LushLocks appears multiple times
-        const lushLocksElements = screen.getAllByText(/LushLocks/i);
-        expect(lushLocksElements.length).toBeGreaterThan(0);
+        expect(screen.getByText(/Experience/i)).toBeInTheDocument();
     });
 
-    it('renders the services section', () => {
+    it('renders the automation section', () => {
         render(<App />);
-        expect(screen.getByText(/Our Services/i)).toBeInTheDocument();
+        expect(screen.getByText(/Automation Arsenal/i)).toBeInTheDocument();
     });
 });

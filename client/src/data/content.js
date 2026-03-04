@@ -43,7 +43,7 @@ export const clientCaseStudies = [
         industry: "AMER",
         tagColor: "#854d0e", // Dark amber/brown for clear visibility
         tagBg: "#fef9c3",    // Solid light yellow
-        duration: "Ongoing",
+        duration: "Completed",
         metric: "Dev/Test/Prod Environments",
         role: "Cloud Security Engineer NGFW Analyst",
         mission: "Executing firewall strategies across multiple environments",
@@ -404,6 +404,26 @@ export const achievements = [
     },
 ];
 
+// Global Incident Monitoring
+export const globalIncidents = [
+    {
+        title: "Operation Attack Sindoor",
+        subtitle: "India-Pakistan Tensions · 2025",
+        description: "Performed daily in-depth security analysis and fine-tuned WAF rules for India's largest e-commerce platform during heightened geopolitical tensions. Monitored traffic patterns, identified anomalous request surges, and implemented targeted Cloud Armor rules to protect critical infrastructure handling 80L+ weekly requests.",
+        region: "APAC",
+        color: "#ea4335",
+        icon: "🛡️",
+    },
+    {
+        title: "Middle East Crisis Response",
+        subtitle: "Iran-Israel Tensions · 2026",
+        description: "Led active monitoring and traffic analysis for UAE-based customers during Middle East geopolitical escalation. Deployed ad-hoc Cloud Armor rules rapidly using Bash automation and AI assistance, performed daily traffic monitoring, and ensured continuous protection for customers' cloud infrastructure across the region.",
+        region: "EMEA",
+        color: "#4285f4",
+        icon: "🌍",
+    },
+];
+
 
 // Personal Interests (updated title)
 export const personalInterests = [
@@ -412,7 +432,7 @@ export const personalInterests = [
         desc: "9+ years, inspired 15+ to join",
         url: "https://maps.app.goo.gl/McEPrZUZ4CiowCbc8"
     },
-    { title: "Technology Educator", desc: "Teaching school teachers modern tech tools, Workspace, and Gemini for everyday efficiency" },
+    { title: "AI Advocate", desc: "Collaborating with colleagues to help them discover how they can use AI in their everyday work — saving hours of manual effort" },
     { title: "Learning Spanish", desc: "Since 2022" },
     { title: "Astrophysics Enthusiast", desc: "Fascinated by the Universe" },
     { title: "Chess & Cricket Player", desc: "" },
@@ -483,6 +503,74 @@ export const newsUpdates = [
         date: "Dec 2025",
         title: "Portfolio Website Launch",
         description: "Launched this personal portfolio website showcasing my journey as a Cloud Security Engineer.",
+    },
+];
+
+// Blog Posts from The Workshop
+export const blogPosts = [
+    {
+        title: "The Manual Load Balancer (Nginx Reverse Proxy)",
+        day: "Day 07",
+        tag: "Advanced",
+        description: "We peel back the abstraction of Cloud Load Balancers by building one manually using Nginx.",
+        url: "https://pratikh6i.github.io/the-workshop/day/day-07-load-balancing/",
+        readTime: "4 min",
+    },
+    {
+        title: "Private DNS & The Split-Horizon",
+        day: "Day 06",
+        tag: "Advanced",
+        description: "Machines talk to IPs, humans talk to names. We build a Private DNS Zone to decouple Identity from Location.",
+        url: "https://pratikh6i.github.io/the-workshop/day/day-06-dns-resolution/",
+        readTime: "5 min",
+    },
+    {
+        title: "Building a Manual NAT Gateway",
+        day: "Day 05",
+        tag: "Advanced",
+        description: "We build a router from scratch using Linux primitives — forwarding, masking, and routing traffic manually.",
+        url: "https://pratikh6i.github.io/the-workshop/day/day-05-manual-nat/",
+        readTime: "4 min",
+    },
+    {
+        title: "The Rule of 4 & The Alias IP Secret",
+        day: "Day 04",
+        tag: "Intermediate",
+        description: "Why GCP steals 4 IPs, why you can't shrink subnets, and how Alias IPs form the backbone of K8s.",
+        url: "https://pratikh6i.github.io/the-workshop/day/day-04-ip-capacity/",
+        readTime: "5 min",
+    },
+    {
+        title: "The Keymaster (SSH & Metadata)",
+        day: "Day 03",
+        tag: "Fundamental",
+        description: "We disable OS Login to manage raw SSH keys manually. Generate, inject via Metadata, and recover.",
+        url: "https://pratikh6i.github.io/the-workshop/day/day-03-ssh-keys/",
+        readTime: "4 min",
+    },
+    {
+        title: "The Data Plane Gap (IAM vs. Linux)",
+        day: "Day 02",
+        tag: "Intermediate",
+        description: "Cloud IAM stops intruders at the door, but Linux permissions protect the room.",
+        url: "https://pratikh6i.github.io/the-workshop/day/day-02-filesystem-security/",
+        readTime: "4 min",
+    },
+    {
+        title: "The Lie of the Open Firewall",
+        day: "Day 01",
+        tag: "Fundamental",
+        description: "A step-by-step guide to building a raw Python server and understanding why 0.0.0.0 matters.",
+        url: "https://pratikh6i.github.io/the-workshop/day/day-01-process-binding/",
+        readTime: "4 min",
+    },
+    {
+        title: "Automating Security Ops (The 429 Analyzer)",
+        day: "Special Ops",
+        tag: "Advanced",
+        description: "We build a Python-powered security bot that analyzes Cloud Armor alerts and sends result cards to Chat.",
+        url: "https://pratikh6i.github.io/the-workshop/day/special-ops-01-429-analyzer/",
+        readTime: "3 min",
     },
 ];
 

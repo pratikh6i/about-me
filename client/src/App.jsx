@@ -1,37 +1,34 @@
-import './index.css'
-import { SnackbarProvider } from './contexts/SnackbarContext'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Services from './components/Services'
-import Products from './components/Products'
-import Testimonials from './components/Testimonials'
-import HairQuiz from './components/HairQuiz'
-import Tips from './components/Tips'
-import Gallery from './components/Gallery'
-import FAQ from './components/FAQ'
-import Newsletter from './components/Newsletter'
-import Footer from './components/Footer'
+import './App.css';
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import ClientCaseStudies from './components/ClientCaseStudies';
+import AutomationArsenal from './components/AutomationArsenal';
+import AIInnovation from './components/AIInnovation';
+import TechArsenal from './components/TechArsenal';
+import HallOfFame from './components/HallOfFame';
+import AchievementsAndInterests from './components/AchievementsAndInterests';
+import ProjectInventory from './components/ProjectInventory';
+import BlogsSection from './components/BlogsSection';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <SnackbarProvider>
-      <div className="min-h-screen bg-neutral-50">
-        <Navbar />
-        <main>
-          <Hero />
-          <Services />
-          <Products />
-          <HairQuiz />
-          <Testimonials />
-          <Tips />
-          <Gallery />
-          <FAQ />
-          <Newsletter />
-        </main>
-        <Footer />
-      </div>
-    </SnackbarProvider>
-  )
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <main>
+        <HeroSection />
+        <ClientCaseStudies />
+        <AutomationArsenal />
+        <AIInnovation />
+        <TechArsenal />
+        <HallOfFame />
+        <AchievementsAndInterests />
+        <ProjectInventory />
+        <BlogsSection />
+      </main>
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;

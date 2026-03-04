@@ -1,152 +1,102 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 
 const tips = [
     {
-        id: 1,
-        title: 'Oiling Your Hair Right',
-        icon: '🫒',
-        content: 'Apply warm coconut or amla oil to your scalp and hair. Massage gently for 5-10 minutes using circular motions. Leave it overnight or for at least 2 hours before washing.',
-        tags: ['All Hair Types', 'Weekly'],
-        color: 'bg-primary-50 border-primary-200',
+        title: 'Monsoon Hair Care Routine',
+        category: 'Seasonal',
+        content: 'Use a mild anti-fungal shampoo twice a week during monsoons. Apply a light leave-in conditioner to prevent humidity frizz. Avoid tying wet hair in tight buns — it weakens roots.',
     },
     {
-        id: 2,
-        title: 'Dealing with Monsoon Hair',
-        icon: '🌧️',
-        content: 'During monsoon, use anti-fungal shampoo to prevent scalp infections. Avoid tying wet hair and let it air dry. Apply light leave-in serum to combat humidity-induced frizz.',
-        tags: ['Monsoon Care', 'India Specific'],
-        color: 'bg-blue-50 border-blue-200',
+        title: 'Oil Massage for Growth',
+        category: 'Ayurvedic',
+        content: 'Warm coconut or bhringraj oil and massage into scalp in circular motions for 10 minutes. Leave overnight and wash next morning with a sulfate-free shampoo. Do this twice a week for best results.',
     },
     {
-        id: 3,
-        title: 'Natural Remedies for Hair Fall',
-        icon: '🌿',
-        content: 'Mix onion juice with honey and apply to your scalp. Fenugreek (methi) seeds soaked overnight and ground into paste work wonders. Hibiscus paste promotes growth naturally.',
-        tags: ['Hair Fall', 'Ayurvedic'],
-        color: 'bg-secondary-50 border-secondary-200',
+        title: 'Diet for Stronger Hair',
+        category: 'Nutrition',
+        content: 'Include sprouts, walnuts, amla, and fish in your diet for keratin and biotin. Drink at least 3 liters of water daily. Consider a daily supplement of biotin (5000 mcg) and zinc.',
     },
     {
-        id: 4,
         title: 'Protect from Hard Water',
-        icon: '💧',
-        content: 'Indian tap water is often hard. Use filtered water for final rinse, or add apple cider vinegar to remove mineral buildup. Consider installing a shower filter.',
-        tags: ['India Specific', 'Daily Care'],
-        color: 'bg-accent-50 border-accent-200',
+        category: 'Daily Care',
+        content: 'Install a shower filter if your area has hard water — it strips natural oils. Rinse hair with diluted apple cider vinegar once a week to remove mineral buildup and restore shine.',
     },
     {
-        id: 5,
-        title: 'Heat Protection Tips',
-        icon: '🔥',
-        content: 'Always use heat protectant spray before styling. Keep straighteners below 180°C for Indian hair. Air dry whenever possible to maintain natural texture.',
-        tags: ['Styling', 'Protection'],
-        color: 'bg-purple-50 border-purple-200',
+        title: 'Henna: The Natural Conditioner',
+        category: 'Ayurvedic',
+        content: 'Mix henna with yogurt, methi powder, and egg for a deep-conditioning hair mask. Apply for 2 hours and wash off. It strengthens hair, adds natural color, and boosts volume.',
     },
     {
-        id: 6,
-        title: 'Diet for Hair Health',
-        icon: '🥗',
-        content: 'Include curry leaves, amla, spinach, and dal in your diet. Stay hydrated with at least 8 glasses of water. Biotin-rich foods like eggs and almonds strengthen hair.',
-        tags: ['Nutrition', 'Inside-Out Care'],
-        color: 'bg-green-50 border-green-200',
+        title: 'Heat Styling Without Damage',
+        category: 'Styling',
+        content: 'Always use a heat protectant spray before straightening or curling. Keep temperature below 180°C. Limit to once a week, and always deep condition afterwards.',
     },
 ];
 
 export default function Tips() {
-    const [expandedId, setExpandedId] = useState(null);
+    const [open, setOpen] = useState(null);
 
     return (
-        <section id="tips" className="section bg-white">
-            <div className="container-custom">
+        <section id="tips" className="section-spacing bg-warm-alt">
+            <div className="container-elegant">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <span className="inline-block px-4 py-2 bg-accent-100 text-accent-600 rounded-full text-sm font-medium mb-4">
-                        Expert Advice
-                    </span>
-                    <h2 className="section-title">
-                        Hair Care Tips for{' '}
-                        <span className="text-gradient">Indian Hair</span>
-                    </h2>
-                    <p className="section-subtitle">
-                        Practical, tried-and-tested tips specifically for the Indian climate and hair types.
+                    <span className="heading-eyebrow mb-3 block">Expert Advice</span>
+                    <h2 className="heading-display text-headline mb-4">Hair Care Tips</h2>
+                    <p className="body-text max-w-lg mx-auto">
+                        Practical, India-specific advice from our expert stylists and trichologists.
                     </p>
                 </motion.div>
 
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={{
-                        hidden: { opacity: 0 },
-                        visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-                    }}
-                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
-                    {tips.map((tip) => (
+                <div className="max-w-3xl mx-auto space-y-3">
+                    {tips.map((tip, i) => (
                         <motion.div
-                            key={tip.id}
-                            variants={{
-                                hidden: { opacity: 0, y: 20 },
-                                visible: { opacity: 1, y: 0 },
-                            }}
-                            className={`rounded-2xl border-2 ${tip.color} overflow-hidden transition-all duration-300 hover:shadow-lg`}
+                            key={i}
+                            initial={{ opacity: 0, y: 16 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.04 }}
+                            className="bg-white rounded-xl border border-charcoal-50 overflow-hidden"
                         >
                             <button
-                                onClick={() => setExpandedId(expandedId === tip.id ? null : tip.id)}
-                                className="w-full p-6 text-left"
+                                onClick={() => setOpen(open === i ? null : i)}
+                                className="w-full flex items-center justify-between p-5 text-left"
                             >
-                                <div className="flex items-start gap-4">
-                                    <span className="text-3xl">{tip.icon}</span>
-                                    <div className="flex-1">
-                                        <h3 className="font-display font-bold text-lg text-neutral-900 mb-2">
-                                            {tip.title}
-                                        </h3>
-                                        <div className="flex flex-wrap gap-2">
-                                            {tip.tags.map((tag) => (
-                                                <span
-                                                    key={tag}
-                                                    className="px-2 py-1 bg-white/80 rounded-full text-xs font-medium text-neutral-600"
-                                                >
-                                                    {tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    <motion.svg
-                                        animate={{ rotate: expandedId === tip.id ? 180 : 0 }}
-                                        className="w-5 h-5 text-neutral-400 flex-shrink-0 mt-1"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                    </motion.svg>
+                                <div className="flex items-center gap-4">
+                                    <span className="px-2.5 py-0.5 bg-cream-100 text-brand-600 text-[10px] font-semibold uppercase tracking-wider rounded-full">
+                                        {tip.category}
+                                    </span>
+                                    <span className="font-medium text-charcoal-900">{tip.title}</span>
                                 </div>
+                                <svg
+                                    className={`w-5 h-5 text-charcoal-300 transition-transform duration-300 ${open === i ? 'rotate-45' : ''}`}
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                >
+                                    <path strokeLinecap="round" strokeWidth="1.5" d="M12 4v16m8-8H4" />
+                                </svg>
                             </button>
-
-                            <motion.div
-                                initial={false}
-                                animate={{
-                                    height: expandedId === tip.id ? 'auto' : 0,
-                                    opacity: expandedId === tip.id ? 1 : 0,
-                                }}
-                                transition={{ duration: 0.3 }}
-                                className="overflow-hidden"
-                            >
-                                <div className="px-6 pb-6 pt-0">
-                                    <div className="h-px bg-neutral-200 mb-4" />
-                                    <p className="text-neutral-600 leading-relaxed">
-                                        {tip.content}
-                                    </p>
-                                </div>
-                            </motion.div>
+                            <AnimatePresence>
+                                {open === i && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: 'auto', opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                                    >
+                                        <div className="px-5 pb-5 text-sm text-charcoal-500 leading-relaxed border-t border-charcoal-50 pt-4">
+                                            {tip.content}
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </motion.div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

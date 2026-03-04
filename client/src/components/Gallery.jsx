@@ -1,219 +1,151 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { Skeleton } from './Skeleton';
 
-const transformations = [
+const results = [
     {
-        id: 1,
-        before: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&h=500&fit=crop',
-        after: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=500&fit=crop',
-        name: 'Riya',
+        name: 'Aditi M.',
+        location: 'Mumbai',
         treatment: 'Keratin Treatment',
-        category: 'smoothing',
+        before: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80',
+        after: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=80',
+        duration: '3 months',
     },
     {
-        id: 2,
-        before: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=500&fit=crop',
-        after: 'https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&h=500&fit=crop',
-        name: 'Priya',
-        treatment: 'Hair Coloring',
-        category: 'color',
+        name: 'Rohan K.',
+        location: 'Pune',
+        treatment: 'Hair Fall Treatment',
+        before: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
+        after: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80',
+        duration: '6 months',
     },
     {
-        id: 3,
-        before: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=500&fit=crop',
-        after: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&h=500&fit=crop',
-        name: 'Ananya',
-        treatment: 'Hair Restoration',
-        category: 'treatment',
+        name: 'Sneha P.',
+        location: 'Delhi',
+        treatment: 'Color & Styling',
+        before: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=80',
+        after: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&q=80',
+        duration: '1 session',
     },
     {
-        id: 4,
-        before: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop',
-        after: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop',
-        name: 'Arjun',
-        treatment: 'Hair Styling',
-        category: 'styling',
+        name: 'Priya V.',
+        location: 'Bangalore',
+        treatment: 'Scalp Therapy',
+        before: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80',
+        after: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80',
+        duration: '4 months',
     },
-];
-
-const filters = [
-    { value: 'all', label: 'All' },
-    { value: 'smoothing', label: 'Smoothing' },
-    { value: 'color', label: 'Coloring' },
-    { value: 'treatment', label: 'Treatment' },
-    { value: 'styling', label: 'Styling' },
 ];
 
 export default function Gallery() {
-    const [isLoading, setIsLoading] = useState(true);
-    const [activeFilter, setActiveFilter] = useState('all');
-    const [lightbox, setLightbox] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [selected, setSelected] = useState(null);
 
-    useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 1600);
-        return () => clearTimeout(timer);
-    }, []);
-
-    const filteredItems = activeFilter === 'all'
-        ? transformations
-        : transformations.filter(t => t.category === activeFilter);
+    useEffect(() => { const t = setTimeout(() => setLoading(false), 1400); return () => clearTimeout(t); }, []);
 
     return (
-        <section id="gallery" className="section gradient-mesh">
-            <div className="container-custom">
+        <section id="results" className="section-spacing bg-warm">
+            <div className="container-elegant">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-12"
+                    className="text-center mb-16"
                 >
-                    <span className="inline-block px-4 py-2 bg-primary-100 text-primary-600 rounded-full text-sm font-medium mb-4">
-                        Real Results
-                    </span>
-                    <h2 className="section-title">
-                        Before & After{' '}
-                        <span className="text-gradient">Transformations</span>
-                    </h2>
-                    <p className="section-subtitle">
-                        See the incredible transformations our clients have experienced.
+                    <span className="heading-eyebrow mb-3 block">Transformations</span>
+                    <h2 className="heading-display text-headline mb-4">Real Results</h2>
+                    <p className="body-text max-w-lg mx-auto">
+                        Before and after stories from real clients across India.
                     </p>
                 </motion.div>
 
-                {/* Filter Tabs */}
-                <div className="flex flex-wrap justify-center gap-2 mb-10">
-                    {filters.map((filter) => (
-                        <button
-                            key={filter.value}
-                            onClick={() => setActiveFilter(filter.value)}
-                            className={`px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-300 ${activeFilter === filter.value
-                                    ? 'bg-primary-500 text-white shadow-md'
-                                    : 'bg-white text-neutral-600 hover:bg-neutral-100'
-                                }`}
-                        >
-                            {filter.label}
-                        </button>
-                    ))}
-                </div>
-
-                {isLoading ? (
+                {loading ? (
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {Array.from({ length: 4 }).map((_, i) => (
-                            <Skeleton key={i} variant="card" height="400px" />
+                            <div key={i} className="bg-white rounded-2xl overflow-hidden border border-charcoal-50">
+                                <div className="grid grid-cols-2 gap-0.5">
+                                    <div className="skeleton-pulse h-40" />
+                                    <div className="skeleton-pulse h-40" />
+                                </div>
+                                <div className="p-4 space-y-2">
+                                    <div className="skeleton-pulse h-4 w-2/3" />
+                                    <div className="skeleton-pulse h-3 w-1/2" />
+                                </div>
+                            </div>
                         ))}
                     </div>
                 ) : (
                     <motion.div
-                        layout
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
                         className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
                     >
-                        <AnimatePresence mode="popLayout">
-                            {filteredItems.map((item) => (
-                                <motion.div
-                                    key={item.id}
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="card group cursor-pointer"
-                                    onClick={() => setLightbox(item)}
-                                >
-                                    {/* Before/After Image Container */}
-                                    <div className="relative aspect-[4/5] overflow-hidden">
-                                        {/* Before Image */}
-                                        <img
-                                            src={item.before}
-                                            alt={`${item.name} before`}
-                                            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
-                                        />
-                                        {/* After Image */}
-                                        <img
-                                            src={item.after}
-                                            alt={`${item.name} after`}
-                                            className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                                        />
-
-                                        {/* Labels */}
-                                        <div className="absolute top-4 left-4 px-3 py-1 bg-neutral-900/80 text-white text-xs font-medium rounded-full transition-opacity group-hover:opacity-0">
+                        {results.map((r, i) => (
+                            <motion.div
+                                key={i}
+                                variants={{
+                                    hidden: { opacity: 0, y: 24 },
+                                    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } },
+                                }}
+                                className="card-elegant cursor-pointer group"
+                                onClick={() => setSelected(r)}
+                            >
+                                <div className="grid grid-cols-2">
+                                    <div className="relative h-44 overflow-hidden">
+                                        <img src={r.before} alt="Before" className="w-full h-full object-cover" />
+                                        <span className="absolute bottom-2 left-2 text-[10px] font-semibold uppercase tracking-wider bg-black/60 text-white px-2 py-0.5 rounded">
                                             Before
-                                        </div>
-                                        <div className="absolute top-4 left-4 px-3 py-1 bg-primary-500 text-white text-xs font-medium rounded-full opacity-0 transition-opacity group-hover:opacity-100">
-                                            After ✨
-                                        </div>
-
-                                        {/* Hover Overlay */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
-                                            <span className="text-white font-medium text-sm">
-                                                Click to enlarge
-                                            </span>
-                                        </div>
+                                        </span>
                                     </div>
-
-                                    {/* Info */}
-                                    <div className="p-4">
-                                        <h4 className="font-display font-semibold text-neutral-900">{item.name}</h4>
-                                        <p className="text-sm text-primary-600">{item.treatment}</p>
+                                    <div className="relative h-44 overflow-hidden">
+                                        <img src={r.after} alt="After" className="w-full h-full object-cover" />
+                                        <span className="absolute bottom-2 left-2 text-[10px] font-semibold uppercase tracking-wider bg-brand-500 text-white px-2 py-0.5 rounded">
+                                            After
+                                        </span>
                                     </div>
-                                </motion.div>
-                            ))}
-                        </AnimatePresence>
+                                </div>
+                                <div className="p-4">
+                                    <div className="font-medium text-charcoal-900 text-sm">{r.name} — {r.location}</div>
+                                    <div className="text-xs text-charcoal-400 mt-0.5">{r.treatment} · {r.duration}</div>
+                                </div>
+                            </motion.div>
+                        ))}
                     </motion.div>
                 )}
             </div>
 
             {/* Lightbox */}
             <AnimatePresence>
-                {lightbox && (
+                {selected && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-                        onClick={() => setLightbox(null)}
+                        className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+                        onClick={() => setSelected(null)}
                     >
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
-                            className="relative max-w-5xl w-full"
+                            className="bg-white rounded-2xl overflow-hidden max-w-2xl w-full"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <button
-                                onClick={() => setLightbox(null)}
-                                className="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white transition-colors"
-                            >
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-
-                            <div className="grid md:grid-cols-2 gap-4">
-                                <div className="relative">
-                                    <img
-                                        src={lightbox.before}
-                                        alt="Before"
-                                        className="w-full rounded-xl"
-                                    />
-                                    <span className="absolute top-4 left-4 px-4 py-2 bg-neutral-900/80 text-white font-medium rounded-full">
-                                        Before
-                                    </span>
+                            <div className="grid grid-cols-2">
+                                <div className="relative h-64 md:h-80">
+                                    <img src={selected.before} alt="Before" className="w-full h-full object-cover" />
+                                    <span className="absolute top-3 left-3 text-xs font-semibold uppercase tracking-wider bg-black/60 text-white px-3 py-1 rounded-full">Before</span>
                                 </div>
-                                <div className="relative">
-                                    <img
-                                        src={lightbox.after}
-                                        alt="After"
-                                        className="w-full rounded-xl"
-                                    />
-                                    <span className="absolute top-4 left-4 px-4 py-2 bg-primary-500 text-white font-medium rounded-full">
-                                        After ✨
-                                    </span>
+                                <div className="relative h-64 md:h-80">
+                                    <img src={selected.after} alt="After" className="w-full h-full object-cover" />
+                                    <span className="absolute top-3 left-3 text-xs font-semibold uppercase tracking-wider bg-brand-500 text-white px-3 py-1 rounded-full">After</span>
                                 </div>
                             </div>
-
-                            <div className="text-center mt-6">
-                                <h3 className="text-2xl font-display font-bold text-white">{lightbox.name}</h3>
-                                <p className="text-primary-400">{lightbox.treatment}</p>
+                            <div className="p-6">
+                                <h3 className="font-display text-xl font-semibold text-charcoal-900">{selected.name}</h3>
+                                <p className="text-sm text-charcoal-400 mt-1">{selected.location} · {selected.treatment} · {selected.duration}</p>
+                                <button onClick={() => setSelected(null)} className="btn-primary mt-4 text-sm py-2.5 px-5">Close</button>
                             </div>
                         </motion.div>
                     </motion.div>

@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // Base path for GitHub Pages deployment (vikasdatapoc repo)
-  base: '/vikasdatapoc/',
+  base: '/about-me/',
   server: {
     port: 5173,
   },

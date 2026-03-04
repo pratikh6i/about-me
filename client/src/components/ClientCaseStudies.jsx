@@ -1,79 +1,67 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { clientCaseStudies } from '../data/content';
-import { assetPath } from '../data/content';
+import { clientCaseStudies, assetPath } from '../data/content';
 
-function CaseStudyCard({ client, isExpanded, onToggle }) {
-    // Helper to switch red colors to something else (e.g. HealthTech was Red)
-    // Red colors usually: #dc2626 (text), #fee2e2 (bg)
-    const getSafeColor = (color) => {
-        if (color === '#dc2626') return '#059669'; // Emerald-600 (Green)
-        if (color === '#be185d') return '#7c3aed'; // Violet-600
-        return color;
-    };
-
-    // Check if background is too reddish
-    const getSafeBg = (bg) => {
-        if (bg === '#fee2e2') return '#ecfdf5'; // Emerald-50
-        if (bg === '#fce7f3') return '#f5f3ff'; // Violet-50
-        return bg;
-    };
-
-    const tagColor = getSafeColor(client.tagColor);
-    const tagBg = getSafeBg(client.tagBg);
+function CaseStudyCard({ client, isExpanded, onToggle, index }) {
+    const isAPAC = client.industry === 'APAC';
+    const accentColor = isAPAC ? '#4285f4' : '#fbbc04';
 
     return (
         <motion.div
-            className="bg-white rounded-2xl border border-[var(--border-subtle)] overflow-hidden shadow-sm hover:shadow-lg transition-all"
+            className="bg-white rounded-xl border border-gray-100 overflow-hidden transition-all relative shadow-card hover:shadow-card-hover"
             layout
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.06 }}
+            whileHover={{ y: -2 }}
         >
-            {/* Header - Always Visible */}
+            {/* Colored left border */}
             <div
-                className="p-6 cursor-pointer"
-                onClick={onToggle}
-            >
+                className="absolute left-0 top-0 bottom-0 w-[3px] rounded-l-xl"
+                style={{ backgroundColor: accentColor }}
+            />
+
+            {/* Header */}
+            <div className="p-5 pl-5 cursor-pointer" onClick={onToggle}>
                 <div className="flex items-start justify-between">
                     <div className="flex items-start gap-3">
-                        {/* GCP Logo - Using the SVG Asset */}
-                        <div className="w-10 h-10 rounded-xl bg-[var(--bg-tertiary)] flex items-center justify-center flex-shrink-0 p-2">
+                        <div className="w-9 h-9 rounded-lg bg-gray-50 flex items-center justify-center flex-shrink-0 p-1.5">
                             <img src={`${assetPath}/gcp.svg`} alt="GCP" className="w-full h-full" />
                         </div>
                         <div>
-                            <h3 className="text-lg font-bold text-[var(--text-primary)]">
+                            <h3 className="font-semibold text-gray-900 leading-tight">
                                 {client.title}
                             </h3>
                             <div className="flex items-center gap-2 mt-1">
                                 <span
-                                    className="px-2 py-0.5 text-xs font-semibold rounded-full"
-                                    style={{ background: tagBg, color: tagColor }}
+                                    className="px-2 py-0.5 text-xs font-medium rounded-full"
+                                    style={{ background: client.tagBg, color: client.tagColor }}
                                 >
                                     {client.industry}
                                 </span>
-                                <span className="text-xs text-[var(--text-tertiary)]">
-                                    {client.duration}
-                                </span>
+                                <span className="text-xs text-gray-400">{client.duration}</span>
                             </div>
                         </div>
                     </div>
 
-                    <motion.button
-                        className="w-8 h-8 rounded-full bg-[var(--bg-tertiary)] flex items-center justify-center text-[var(--text-secondary)]"
+                    <motion.div
+                        className="w-7 h-7 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 flex-shrink-0 hover:bg-blue-50 hover:text-google-blue transition-colors"
                         animate={{ rotate: isExpanded ? 180 : 0 }}
+                        transition={{ duration: 0.2 }}
                     >
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-                            <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                            <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                         </svg>
-                    </motion.button>
+                    </motion.div>
                 </div>
 
-                {/* Quick Stats */}
-                <div className="mt-4 flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-[var(--bg-tertiary)] rounded-full text-sm font-medium text-[var(--text-primary)]">
+                {/* Quick Tags */}
+                <div className="mt-3 flex flex-wrap gap-2">
+                    <span className="px-2.5 py-1 bg-gray-50 rounded-lg text-xs font-medium text-gray-700">
                         {client.metric}
                     </span>
-                    <span className="px-3 py-1 bg-purple-50 text-purple-700 rounded-full text-sm font-medium">
+                    <span className="px-2.5 py-1 bg-blue-50 text-google-blue rounded-lg text-xs font-medium">
                         {client.role}
                     </span>
                 </div>
@@ -89,37 +77,30 @@ function CaseStudyCard({ client, isExpanded, onToggle }) {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                     >
-                        <div className="px-6 pb-6 border-t border-[var(--border-subtle)] pt-4">
+                        <div className="px-5 pb-5 border-t border-gray-50 pt-4 space-y-4">
                             {/* Mission */}
-                            <div className="mb-4">
-                                <h4 className="text-xs font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">
+                            <div>
+                                <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5">
                                     The Mission
                                 </h4>
-                                <p className="text-sm text-[var(--text-secondary)]">
-                                    {client.mission}
-                                </p>
+                                <p className="text-sm text-gray-600 leading-relaxed">{client.mission}</p>
                             </div>
 
                             {/* Responsibilities */}
-                            <div className="mb-4">
-                                <h4 className="text-xs font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">
+                            <div>
+                                <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
                                     What I Delivered
                                 </h4>
-                                <ul className="space-y-2">
+                                <ul className="space-y-1.5">
                                     {client.responsibilities.map((resp, i) => (
                                         <motion.li
                                             key={i}
-                                            className="flex items-start gap-2 text-sm text-[var(--text-secondary)]"
-                                            initial={{ opacity: 0, x: -10 }}
+                                            className="flex items-start gap-2 text-sm text-gray-600"
+                                            initial={{ opacity: 0, x: -8 }}
                                             animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: i * 0.05 }}
+                                            transition={{ delay: i * 0.04 }}
                                         >
-                                            <span className="text-green-500 mt-0.5 font-bold">✓</span>
-                                            {/* Note: User asked for bullets, but checkmarks are visually better here. 
-                                                If strict bullets are needed, replace the span above with:
-                                                <span className="mx-1.5 mt-1.5 w-1.5 h-1.5 rounded-full bg-gray-400 flex-shrink-0"></span>
-                                                Keeping checkmarks as they are "Security Engineer" style (audit passed). 
-                                            */}
+                                            <span className="mt-0.5 flex-shrink-0" style={{ color: '#34a853' }}>✓</span>
                                             {resp}
                                         </motion.li>
                                     ))}
@@ -127,31 +108,25 @@ function CaseStudyCard({ client, isExpanded, onToggle }) {
                             </div>
 
                             {/* Tech Stack */}
-                            <div className="mb-4">
-                                <h4 className="text-xs font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">
+                            <div>
+                                <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
                                     Tech Stack
                                 </h4>
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex flex-wrap gap-1.5">
                                     {client.techStack.map((tech, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-2 py-1 text-xs font-medium rounded-md bg-blue-50 text-blue-700"
-                                        >
+                                        <span key={i} className="px-2 py-1 text-xs font-medium rounded-md bg-blue-50 text-google-blue">
                                             {tech}
                                         </span>
                                     ))}
                                 </div>
                             </div>
 
-                            {/* Key Stats */}
-                            <div className="grid grid-cols-3 gap-3">
+                            {/* Stats */}
+                            <div className="grid grid-cols-3 gap-2">
                                 {Object.entries(client.stats).map(([key, value]) => (
-                                    <div
-                                        key={key}
-                                        className="bg-[var(--bg-tertiary)] rounded-xl p-3 text-center"
-                                    >
-                                        <div className="text-lg font-bold text-[var(--text-primary)]">{value}</div>
-                                        <div className="text-xs text-[var(--text-secondary)]">{key}</div>
+                                    <div key={key} className="bg-gray-50 rounded-lg p-3 text-center">
+                                        <div className="text-sm font-bold text-gray-900">{value}</div>
+                                        <div className="text-xs text-gray-500 mt-0.5">{key}</div>
                                     </div>
                                 ))}
                             </div>
@@ -166,44 +141,36 @@ function CaseStudyCard({ client, isExpanded, onToggle }) {
 function ClientCaseStudies() {
     const [expandedId, setExpandedId] = useState(null);
 
-    const toggleExpand = (id) => {
-        setExpandedId(expandedId === id ? null : id);
-    };
-
     return (
-        <section className="py-16 bg-[var(--bg-tertiary)]" id="experience">
+        <section className="py-14 bg-gray-50/50" id="experience">
             <div className="container">
-                {/* Section Header */}
                 <motion.div
-                    className="text-center mb-12"
+                    className="text-center mb-8"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3">
-                        Client Case Studies
-                    </h2>
-                    <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
+                    {/* Google-colored accent dots */}
+                    <div className="flex justify-center gap-1.5 mb-4">
+                        {['#4285f4', '#ea4335', '#fbbc04', '#34a853'].map((c) => (
+                            <div key={c} className="w-2 h-2 rounded-full" style={{ backgroundColor: c }} />
+                        ))}
+                    </div>
+                    <h2 className="section-heading mb-3">Client Case Studies</h2>
+                    <p className="section-subheading mx-auto">
                         Securing global infrastructure across 8 enterprise clients. Click any card to see detailed contributions.
                     </p>
                 </motion.div>
 
-                {/* Case Study Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {clientCaseStudies.map((client, index) => (
-                        <motion.div
+                        <CaseStudyCard
                             key={client.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                        >
-                            <CaseStudyCard
-                                client={client}
-                                isExpanded={expandedId === client.id}
-                                onToggle={() => toggleExpand(client.id)}
-                            />
-                        </motion.div>
+                            client={client}
+                            index={index}
+                            isExpanded={expandedId === client.id}
+                            onToggle={() => setExpandedId(expandedId === client.id ? null : client.id)}
+                        />
                     ))}
                 </div>
             </div>

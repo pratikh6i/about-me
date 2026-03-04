@@ -1,66 +1,89 @@
 import { motion } from 'framer-motion';
 import { techArsenal } from '../data/content';
 
+const googleColorsOrder = ['#4285f4', '#ea4335', '#fbbc04', '#34a853', '#4285f4'];
+
 function TechArsenal() {
     const categories = Object.values(techArsenal);
 
     return (
-        <section className="py-16 bg-white" id="skills">
+        <section className="py-14 bg-gray-50/50" id="skills">
             <div className="container">
-                {/* Section Header */}
                 <motion.div
-                    className="text-center mb-12"
+                    className="text-center mb-8"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-3">
-                        Tech Arsenal (Skills)
-                    </h2>
-                    <p className="text-[var(--text-secondary)]">
+                    <div className="flex justify-center gap-1.5 mb-4">
+                        {['#4285f4', '#ea4335', '#fbbc04', '#34a853'].map((c) => (
+                            <div key={c} className="w-2 h-2 rounded-full" style={{ backgroundColor: c }} />
+                        ))}
+                    </div>
+                    <h2 className="section-heading mb-3">Tech Arsenal</h2>
+                    <p className="section-subheading mx-auto">
                         Tools and technologies I wield daily
                     </p>
                 </motion.div>
 
-                {/* Skills Grid - Clean Card Design */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 w-full">
-                    {categories.map((category, catIndex) => (
-                        <motion.div
-                            key={category.title}
-                            className="rounded-2xl p-5 transition-all"
-                            style={{ backgroundColor: category.bgColor }}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: catIndex * 0.08 }}
-                            whileHover={{ y: -4, scale: 1.02 }}
-                        >
-                            {/* Category Header */}
-                            <h3
-                                className="text-sm font-bold mb-4"
-                                style={{ color: category.color }}
+                {/* Larger cards, Google colors in order */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+                    {categories.map((category, catIndex) => {
+                        const color = googleColorsOrder[catIndex % googleColorsOrder.length];
+                        return (
+                            <motion.div
+                                key={category.title}
+                                className="bg-white rounded-2xl border border-gray-100 p-6 shadow-card hover:shadow-card-hover transition-all group relative overflow-hidden"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: catIndex * 0.08 }}
+                                whileHover={{ y: -4 }}
                             >
-                                {category.title}
-                            </h3>
+                                {/* Colored top accent — thick for visibility */}
+                                <div
+                                    className="absolute top-0 left-0 right-0 h-1 transition-all group-hover:h-1.5"
+                                    style={{ backgroundColor: color }}
+                                />
 
-                            {/* Skills List - Vertical */}
-                            <div className="space-y-2">
-                                {category.skills.map((skill, skillIndex) => (
-                                    <motion.div
-                                        key={skill}
-                                        className="text-sm text-[var(--text-primary)] font-medium flex items-center gap-2"
-                                        initial={{ opacity: 0 }}
-                                        whileInView={{ opacity: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: catIndex * 0.08 + skillIndex * 0.03 }}
+                                {/* Category Header */}
+                                <div className="flex items-center gap-2.5 mb-5">
+                                    <div
+                                        className="w-8 h-8 rounded-lg flex items-center justify-center"
+                                        style={{ backgroundColor: `${color}15` }}
                                     >
-                                        <span className="w-1.5 h-1.5 bg-current rounded-full opacity-60 flex-shrink-0" style={{ color: category.color }}></span>
-                                        {skill}
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
+                                        <div
+                                            className="w-3 h-3 rounded-full"
+                                            style={{ backgroundColor: color }}
+                                        />
+                                    </div>
+                                    <h3
+                                        className="text-base font-bold"
+                                        style={{ color: color }}
+                                    >
+                                        {category.title}
+                                    </h3>
+                                </div>
+
+                                {/* Skills as chips — larger and clearer */}
+                                <div className="flex flex-wrap gap-2">
+                                    {category.skills.map((skill) => (
+                                        <span
+                                            key={skill}
+                                            className="px-3 py-1.5 text-sm font-medium rounded-lg transition-colors"
+                                            style={{
+                                                backgroundColor: `${color}08`,
+                                                color: color,
+                                                border: `1px solid ${color}20`,
+                                            }}
+                                        >
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
         </section>
